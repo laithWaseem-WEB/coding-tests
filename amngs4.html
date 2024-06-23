@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>4 Players</title>
+        <style>
+            body {
+                background-color: black;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .btn {
+                border-width: 2px;
+                border-color: white;
+                border-radius: 50%;
+                border-style: solid;
+                background-color: black;
+                color: white;
+                cursor: pointer;
+                margin: 10px;
+                height: 35px;
+                width: 35px;
+                font-weight: 600;
+            }
+
+            .div2 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 40px;
+                margin-top: 25px;
+            }
+
+            .div1 {
+                color: white;
+                background-color: black;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                border-width: 5px;
+                height: 200px;
+                width: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .divr {
+                background-color: red;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
+
+            .divb {
+                background-color: blue;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
+
+            .divg {
+                background-color: green;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
+
+            .divy {
+                background-color: yellow;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="amngs.html">
+            <button class="btn"><</button>
+        </a>
+        <div class="div2">
+            <div class="div1" onclick="
+            let S = Math.random();
+            let player1;
+            let player2;
+            let player3;
+            let player4;
+            
+            if (S > 0 && S <= 1/4) {
+                player1 = 'IMPOSTER | امبوستر';
+                player2 = 'CREWMATE | مسالم';
+                player3 = 'CREWMATE | مسالم';
+                player4 = 'CREWMATE | مسالم';
+                alert('مرر الجهاز للاحمر')
+                alert(player1)
+                alert('مرر الجهاز للازرق')
+                alert(player2)
+                alert('مرر الجهاز للاخضر')
+                alert(player3)
+                alert('مرر الجهاز للاصفر')
+                alert(player4)
+            } else if (S > 0 && S <= 2/4) {
+                player1 = 'CREWMATE | مسالم';
+                player2 = 'IMPOSTER | امبوستر';
+                player3 = 'CREWMATE | مسالم';
+                player4 = 'CREWMATE | مسالم';
+                alert('مرر الجهاز للاحمر')
+                alert(player1)
+                alert('مرر الجهاز للازرق')
+                alert(player2)
+                alert('مرر الجهاز للاخضر')
+                alert(player3)
+                alert('مرر الجهاز للاصفر')
+                alert(player4)
+            } else if (S > 0 && S <= 3/4) {
+                player1 = 'CREWMATE | مسالم';
+                player2 = 'CREWMATE | مسالم';
+                player3 = 'IMPOSTER | امبوستر';
+                player4 = 'CREWMATE | مسالم';
+                alert('مرر الجهاز للاحمر')
+                alert(player1)
+                alert('مرر الجهاز للازرق')
+                alert(player2)
+                alert('مرر الجهاز للاخضر')
+                alert(player3)
+                alert('مرر الجهاز للاصفر')
+                alert(player4)
+                } else if (S > 0 && S <= 4/4) {
+                alert()
+                player1 = 'CREWMATE | مسالم';
+                player2 = 'CREWMATE | مسالم';
+                player3 = 'CREWMATE | مسالم';
+                player4 = 'IMPOSTER | امبوستر';
+                alert('مرر الجهاز للاحمر')
+                alert(player1)
+                alert('مرر الجهاز للازرق')
+                alert(player2)
+                alert('مرر الجهاز للاخضر')
+                alert(player3)
+                alert('مرر الجهاز للاصفر')
+                alert(player4)
+            }
+            ">Start</div>
+        </div>
+        <div class="div2">
+            <div class="divr"></div>
+            <div class="divb"></div>
+            <div class="divg"></div>
+            <div class="divy"></div>
+        </div>
+    </body>
+</html>
