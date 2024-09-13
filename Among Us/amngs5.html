@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>4 Players</title>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Among Us IRL">
+        <title>5 Players</title>
         <style>
             body {
-                background-color: black;
+                background-image: url('backgroundPhoto.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
                 font-family: Arial, Helvetica, sans-serif;
+                background-color: black;
             }
 
             .btn {
@@ -80,6 +87,15 @@
                 height: 50px;
                 width: 50px;
             }
+
+            .divp {
+                background-color: pink;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
         </style>
     </head>
     <body>
@@ -93,12 +109,14 @@
             let player2;
             let player3;
             let player4;
+            let player5;
             
-            if (S > 0 && S <= 1/4) {
+            if (S > 0 && S <= 1/5) {
                 player1 = 'IMPOSTER | امبوستر';
                 player2 = 'CREWMATE | مسالم';
                 player3 = 'CREWMATE | مسالم';
                 player4 = 'CREWMATE | مسالم';
+                player5 = 'CREWMATE | مسالم';
                 alert('مرر الجهاز للاحمر')
                 alert(player1)
                 alert('مرر الجهاز للازرق')
@@ -107,11 +125,14 @@
                 alert(player3)
                 alert('مرر الجهاز للاصفر')
                 alert(player4)
-            } else if (S > 0 && S <= 2/4) {
+                alert('مرر الجهاز للوردي')
+                alert(player5)
+            } else if (S > 0 && S <= 2/5) {
                 player1 = 'CREWMATE | مسالم';
                 player2 = 'IMPOSTER | امبوستر';
                 player3 = 'CREWMATE | مسالم';
                 player4 = 'CREWMATE | مسالم';
+                player5 = 'CREWMATE | مسالم';
                 alert('مرر الجهاز للاحمر')
                 alert(player1)
                 alert('مرر الجهاز للازرق')
@@ -120,11 +141,14 @@
                 alert(player3)
                 alert('مرر الجهاز للاصفر')
                 alert(player4)
-            } else if (S > 0 && S <= 3/4) {
+                alert('مرر الجهاز للوردي')
+                alert(player5)
+            } else if (S > 0 && S <= 3/5) {
                 player1 = 'CREWMATE | مسالم';
                 player2 = 'CREWMATE | مسالم';
                 player3 = 'IMPOSTER | امبوستر';
                 player4 = 'CREWMATE | مسالم';
+                player5 = 'CREWMATE | مسالم';
                 alert('مرر الجهاز للاحمر')
                 alert(player1)
                 alert('مرر الجهاز للازرق')
@@ -133,12 +157,14 @@
                 alert(player3)
                 alert('مرر الجهاز للاصفر')
                 alert(player4)
-                } else if (S > 0 && S <= 4/4) {
-                alert()
+                alert('مرر الجهاز للوردي')
+                alert(player5)
+                } else if (S > 0 && S <= 4/5) {
                 player1 = 'CREWMATE | مسالم';
                 player2 = 'CREWMATE | مسالم';
                 player3 = 'CREWMATE | مسالم';
                 player4 = 'IMPOSTER | امبوستر';
+                player5 = 'CREWMATE | مسالم';
                 alert('مرر الجهاز للاحمر')
                 alert(player1)
                 alert('مرر الجهاز للازرق')
@@ -147,6 +173,26 @@
                 alert(player3)
                 alert('مرر الجهاز للاصفر')
                 alert(player4)
+                alert('مرر الجهاز للوردي')
+                alert(player5)
+            }   else if (S > 0 && S <= 5/5) {
+                player1 = 'CREWMATE | مسالم';
+                player2 = 'CREWMATE | مسالم';
+                player3 = 'CREWMATE | مسالم';
+                player4 = 'CREWMATE | مسالم';
+                player5 = 'IMPOSTER | امبوستر';
+                alert('مرر الجهاز للاحمر')
+                alert(player1)
+                alert('مرر الجهاز للازرق')
+                alert(player2)
+                alert('مرر الجهاز للاخضر')
+                alert(player3)
+                alert('مرر الجهاز للاصفر')
+                alert(player4)
+                alert('مرر الجهاز للوردي')
+                alert(player5)
+            }   else {
+                alert('حدث خطأ ما')
             }
             ">Start</div>
         </div>
@@ -155,6 +201,7 @@
             <div class="divb"></div>
             <div class="divg"></div>
             <div class="divy"></div>
+            <div class="divp"></div>
         </div>
     </body>
 </html>
