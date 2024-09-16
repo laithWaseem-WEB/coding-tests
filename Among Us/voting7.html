@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Counters</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            background-image: url('backgroundPhoto.webp');
+            margin: 0;
+            background-color: #f0f0f0;
+            color: white;
+        }
+
+        button {
+            color: white;
+            background-color: rgb(45, 44, 44);
+            border-style: none;
+            border-radius: 5px;
+            font-size: 16px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .counters-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .counter1 {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 120px;
+            background-color: red;
+        }
+
+        .counter2 {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 120px;
+            background-color: blue;
+        }
+
+        .counter3 {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 120px;
+            background-color: green;
+        }
+
+        .counter4 {
+            text-align: center;   
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 120px;
+            background-color: rgb(215, 215, 8);
+        }
+
+        .counter5 {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 120px;
+            background-color: pink;
+        }
+
+        .counter6 {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 120px;
+            background-color: white;
+        }
+
+        .counter7 {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 120px;
+            background-color: rgb(150, 75, 0);
+        }
+
+        .count {
+            font-size: 20px;
+            padding-top: 1px;
+            padding-bottom: 4px;
+            display: inline;
+            background-color: rgb(45, 44, 44);
+            padding-left: 22px;
+            padding-right: 22px;
+        }
+    </style>
+</head>
+<body>
+    <div class="counters-container">
+        <div class="counter1">
+            
+            <button onclick="decrement(0)">-</button>
+            <span class="count">0</span>
+            <button onclick="increment(0)">+</button>
+        </div>
+        <div class="counter2">
+           
+            <button onclick="decrement(1)">-</button>
+            <span class="count">0</span>
+            <button onclick="increment(1)">+</button>
+        </div>
+        <div class="counter3">
+       
+            <button onclick="decrement(2)">-</button>
+            <span class="count">0</span>
+            <button onclick="increment(2)">+</button>
+        </div>
+        <div class="counter4">
+           
+            <button onclick="decrement(3)">-</button>
+            <span class="count">0</span>
+            <button onclick="increment(3)">+</button>
+        </div>
+        <div class="counter5">
+          
+            <button onclick="decrement(4)">-</button>
+            <span class="count">0</span>
+            <button onclick="increment(4)">+</button>
+        </div>
+        <div class="counter6">
+          
+            <button onclick="decrement(5)">-</button>
+            <span class="count">0</span>
+            <button onclick="increment(5)">+</button>
+        </div>
+        <div class="counter7">
+          
+            <button onclick="decrement(6)">-</button>
+            <span class="count">0</span>
+            <button onclick="increment(6)">+</button>
+        </div>
+    </div>
+
+    <script>
+        const counts = [0, 0, 0, 0, 0, 0, 0];
+        const countDisplays = document.querySelectorAll('.count');
+
+        function updateDisplay(index) {
+            countDisplays[index].textContent = counts[index];
+        }
+
+        function increment(index) {
+            counts[index]++;
+            updateDisplay(index);
+        }
+
+        function decrement(index) {
+            counts[index]--;
+            updateDisplay(index);
+        }
+    </script>
+</body>
+</html>
