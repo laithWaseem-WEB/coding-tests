@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Among Us IRL">
+        <title>7 Players</title>
+        <style>
+            body {
+                background-image: url('backgroundPhoto.webp');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: black;
+            }
+
+            .btn {
+                border-width: 2px;
+                border-color: white;
+                border-radius: 50%;
+                border-style: solid;
+                background-color: black;
+                color: white;
+                cursor: pointer;
+                margin: 10px;
+                height: 35px;
+                width: 35px;
+                font-weight: 600;
+            }
+
+            .div2 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 40px;
+                margin-top: 25px;
+            }
+
+            .div1 {
+                color: white;
+                background-color: black;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                border-width: 5px;
+                height: 200px;
+                width: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .divr {
+                background-color: red;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
+
+            .divb {
+                background-color: blue;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
+
+            .divg {
+                background-color: green;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
+
+            .divy {
+                background-color: yellow;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
+
+            .divp {
+                background-color: pink;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
+
+            .divw {
+                background-color: white;
+                border-radius: 50%;
+                border-color: white;
+                border-style: solid;
+                height: 50px;
+                width: 50px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <a href="amngs.html">
+            <button class="btn"><</button>
+        </a>
+        <div class="div2">
+            <div class="div1" onclick="
+            let S = Math.random();
+            let player1;
+            let player2;
+            let player3;
+            let player4;
+            let player5;
+            let player6;
+            let player7;
+            
+            if (S > 0 && S <= 1/6) {
+                player1 = 'IMPOSTER | امبوستر';
+                player2 = 'CREWMATE | مسالم';
+                player3 = 'CREWMATE | مسالم';
+                player4 = 'CREWMATE | مسالم';
+                player5 = 'CREWMATE | مسالم';
+                player6 = 'CREWMATE | مسالم';
+                alert('مرر الجهاز للاحمر');
+                alert(player1);
+                alert('مرر الجهاز للازرق');
+                alert(player2);
+                alert('مرر الجهاز للاخضر');
+                alert(player3);
+                alert('مرر الجهاز للاصفر');
+                alert(player4);
+                alert('مرر الجهاز للوردي');
+                alert(player5);
+                alert('مرر الجهاز للابيض');
+                alert(player6);
+            } else if (S > 1/7 && S <= 2/6) {
+                player1 = 'CREWMATE | مسالم';
+                player2 = 'IMPOSTER | امبوستر';
+                player3 = 'CREWMATE | مسالم';
+                player4 = 'CREWMATE | مسالم';
+                player5 = 'CREWMATE | مسالم';
+                player6 = 'CREWMATE | مسالم';
+                alert('مرر الجهاز للاحمر');
+                alert(player1);
+                alert('مرر الجهاز للازرق');
+                alert(player2);
+                alert('مرر الجهاز للاخضر');
+                alert(player3);
+                alert('مرر الجهاز للاصفر');
+                alert(player4);
+                alert('مرر الجهاز للوردي');
+                alert(player5);
+                alert('مرر الجهاز للابيض');
+                alert(player6);
+            } else if (S > 2/7 && S <= 3/6) {
+                player1 = 'CREWMATE | مسالم';
+                player2 = 'CREWMATE | مسالم';
+                player3 = 'IMPOSTER | امبوستر';
+                player4 = 'CREWMATE | مسالم';
+                player5 = 'CREWMATE | مسالم';
+                player6 = 'CREWMATE | مسالم';
+                alert('مرر الجهاز للاحمر');
+                alert(player1);
+                alert('مرر الجهاز للازرق');
+                alert(player2);
+                alert('مرر الجهاز للاخضر');
+                alert(player3);
+                alert('مرر الجهاز للاصفر');
+                alert(player4);
+                alert('مرر الجهاز للوردي');
+                alert(player5);
+                alert('مرر الجهاز للابيض');
+                alert(player6);
+            } else if (S > 3/7 && S <= 4/6) {
+                player1 = 'CREWMATE | مسالم';
+                player2 = 'CREWMATE | مسالم';
+                player3 = 'CREWMATE | مسالم';
+                player4 = 'IMPOSTER | امبوستر';
+                player5 = 'CREWMATE | مسالم';
+                player6 = 'CREWMATE | مسالم';
+                alert('مرر الجهاز للاحمر');
+                alert(player1);
+                alert('مرر الجهاز للازرق');
+                alert(player2);
+                alert('مرر الجهاز للاخضر');
+                alert(player3);
+                alert('مرر الجهاز للاصفر');
+                alert(player4);
+                alert('مرر الجهاز للوردي');
+                alert(player5);
+                alert('مرر الجهاز للابيض');
+                alert(player6);
+            } else if (S > 4/7 && S <= 5/6) {
+                player1 = 'CREWMATE | مسالم';
+                player2 = 'CREWMATE | مسالم';
+                player3 = 'CREWMATE | مسالم';
+                player4 = 'CREWMATE | مسالم';
+                player5 = 'IMPOSTER | امبوستر';
+                player6 = 'CREWMATE | مسالم';
+                alert('مرر الجهاز للاحمر');
+                alert(player1);
+                alert('مرر الجهاز للازرق');
+                alert(player2);
+                alert('مرر الجهاز للاخضر');
+                alert(player3);
+                alert('مرر الجهاز للاصفر');
+                alert(player4);
+                alert('مرر الجهاز للوردي');
+                alert(player5);
+                alert('مرر الجهاز للابيض');
+                alert(player6);
+            } else if (S > 5/7 && S <= 6/6) {
+                player1 = 'CREWMATE | مسالم';
+                player2 = 'CREWMATE | مسالم';
+                player3 = 'CREWMATE | مسالم';
+                player4 = 'CREWMATE | مسالم';
+                player5 = 'CREWMATE | مسالم';
+                player6 = 'IMPOSTER | امبوستر';
+                alert('مرر الجهاز للاحمر');
+                alert(player1);
+                alert('مرر الجهاز للازرق');
+                alert(player2);
+                alert('مرر الجهاز للاخضر');
+                alert(player3);
+                alert('مرر الجهاز للاصفر');
+                alert(player4);
+                alert('مرر الجهاز للوردي');
+                alert(player5);
+                alert('مرر الجهاز للابيض');
+                alert(player6);
+            } else {
+                alert('حدث خطأ ما');
+            }
+
+            ">Start</div>
+        </div>
+        <div class="div2">
+            <div class="divr"></div>
+            <div class="divb"></div>
+            <div class="divg"></div>
+            <div class="divy"></div>
+            <div class="divp"></div>
+            <div class="divw"></div>
+        </div>
+    </body>
+</html>
