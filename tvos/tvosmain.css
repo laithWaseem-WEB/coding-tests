@@ -1,0 +1,50 @@
+body {
+    background-image: url('w1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: black;
+}
+
+.apps {
+    display: grid;
+    grid-template-columns: 0fr 0fr;
+}
+
+.app1 {
+    background-color: black;
+    height: 100px;
+    width: 192px;
+    background-image: url('ytv.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    margin-left: 45px;
+    margin-top: 30px;
+}
+
+.app2 {
+    background-color: black;
+    height: 100px;
+    width: 192px;
+    background-image: url('cstv.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    margin-left: 45px;
+    margin-top: 30px;
+}
+
+.wb {
+    background-color: black;
+    border-radius: 20px;
+    height: 50px;
+    width: 160px;
+    text-align: center;
+    
+}
+
+.wt {
+    font-family: "Varela Round", serif;
+    color: white;
+}
