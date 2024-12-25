@@ -46,4 +46,6 @@ body {
 .wt {
     font-family: "Varela Round", serif;
     color: white;
+    margin-left: 20;
+    font-size: 25px;
 }
