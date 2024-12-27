@@ -49,25 +49,74 @@ body {
     border-radius: 25px;
 }
 
-.wb {
+.wlc {
+    display: grid;
+    grid-template-columns: 0fr 0fr;
+}
+
+.wlcb {
     background-color: black;
     border-radius: 17px;
     height: 70px;
-    width: 290px;
+    width: fit-content;
     align-content: center;
     margin-left: 42px;
 
 }
 
-.wt {
+.wlct {
     font-family: "Varela Round", serif;
     color: white;
     margin-left: 20px;
+    margin-right: 20px;
     margin-top: 21px;
     font-size: 25px;
     cursor: default;
+    white-space: nowrap;
 }
 
-.nmi {
+.wlcnb {
+    background-color: black;
+    border-radius: 17px;
+    height: 70px;
+    width: fit-content;
+    align-content: center;
+    margin-left: 21px;
+}
+
+.wlcn {
+    font-family: "Varela Round", serif;
     color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 25px;
+    cursor: default;
+    white-space: nowrap;
+}
+
+.nami {
+    margin-right: 0px;
+    margin-left: 10px;
+    height: 23.677px;
+    width: 84px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-style: none;
+    padding-left: 10px;
+    font-family: "Varela Round", serif;
+    margin-bottom: 2px;
+    outline: none;
+}
+
+.wlcns {
+    margin-left: -6.5px;
+    margin-top: 12px;
+    height: 25.4px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: none;
 }
