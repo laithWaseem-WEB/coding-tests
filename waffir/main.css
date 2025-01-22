@@ -1,0 +1,41 @@
+body {
+    background-color: white;
+}
+
+nav {
+    background-image: linear-gradient(to right, #007f17 20%, #c3d106  80%);
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    
+    
+    
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+nav ul li img {
+    height: 50px;
+    width: 100px;
+    margin: 5px 10px;
+    border-radius: 15px;
+}
