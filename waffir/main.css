@@ -3,7 +3,7 @@ body {
 }
 
 nav {
-    background-image: linear-gradient(to right, #007f17 20%, #c3d106  80%);
+    background-image: linear-gradient(to right, #007f17 20%, #c3d106 80%);
     overflow: hidden;
     border-radius: 20px;
 }
@@ -12,25 +12,35 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: center;
 }
 
 nav ul li {
-    float: left;
+    float: right;
 }
 
 nav ul li a {
     display: block;
     color: white;
-    
-    
-    
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    transition: color 0.5s;
+    font-family: "Markazi Text", serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 17px;
+}
+
+.Q {
+    float: right;
 }
 
 nav ul li a:hover {
-    background-color: #111;
+    color: #089b00;
+    font-weight: bold;
 }
 
 nav ul li img {
