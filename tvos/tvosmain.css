@@ -8,7 +8,7 @@ body {
 
 .apps {
     display: grid;
-    grid-template-columns: 0fr 0fr;
+    grid-template-columns: 0.2fr 0.2fr;
 }
 
 .app1 {
