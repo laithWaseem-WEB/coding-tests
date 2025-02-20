@@ -9,6 +9,7 @@ body{
     left: 0;
     width: 60px;
     height: 100%;
+    z-index: 3;
     background-color: rgb(15, 115, 215);
     color: white;
     display: flex;
@@ -29,6 +30,7 @@ body{
     display: flex;
     align-items: center;
     padding-left: 10px;
+    z-index: 3;
 }
 
 .logoIMG {
@@ -110,3 +112,48 @@ body{
     background-color: rgb(0, 0, 0);
     color: white;
 }
+
+.mainContent{
+    position: fixed;
+    margin-top: 47px;
+    margin-left: 52px;
+    height: 100%;
+    width: calc(100% - 75px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.scoreOptionMY{
+    top: 55px;
+    left: 60px; /* Adjust to the width of the left toolbar */
+    width: calc(100% - 0px);
+    height: 55px;
+    background-color: rgba(207, 207, 207, 0.699);
+    display: grid;
+    align-items: center;
+    padding-left: 10px;
+    margin-left: 8px;
+    margin-top: 8px;
+    border: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    cursor: pointer;
+}
+
+.scoreOptionALL{
+    top: 55px;
+    left: 60px;
+    width: calc(100% - 0px);
+    height: 55px;
+    background-color: rgba(207, 207, 207, 0.699);
+    display: grid;
+    align-items: center;
+    padding-left: 10px;
+    margin-left: 8px;
+    margin-top: 8px;
+    border: none;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    cursor: pointer;
+}
+
