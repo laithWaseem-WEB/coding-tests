@@ -134,10 +134,14 @@ body{
     padding-left: 10px;
     margin-left: 8px;
     margin-top: 8px;
-    border: none;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     cursor: pointer;
+    text-decoration: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: rgb(15, 115, 215);
 }
 
 .scoreOptionALL{
@@ -151,9 +155,12 @@ body{
     padding-left: 10px;
     margin-left: 8px;
     margin-top: 8px;
-    border: none;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
     cursor: pointer;
+    border: none;
 }
 
+a:link {
+    text-decoration: none;
+}

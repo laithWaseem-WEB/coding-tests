@@ -1,0 +1,166 @@
+body{
+    background-color: white; /* #0047AB rgb(15, 115, 215) */
+}
+
+/* Left toolbar */
+.left-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 3;
+    background-color: rgb(15, 115, 215);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* Top toolbar */
+.top-toolbar {
+    position: fixed;
+    top: 0;
+    left: 60px; /* Adjust to the width of the left toolbar */
+    width: calc(100% - 60px);
+    height: 55px;
+    background-color: rgb(15, 115, 215);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    z-index: 3;
+}
+
+.logoIMG {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    justify-items: center;
+    align-items: center;
+}
+
+.scoresB {
+    height: 40px;
+    width: 59px;
+    color: black;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    background-color: rgb(0, 0, 0, 0.2);
+    border-style: solid;
+    border: none;
+    border-radius: 14px;
+    max-width: fit-content;
+    margin-left: 1px;
+    margin-right: auto;
+    margin-top: 13px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.scoresB:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.searchB {
+    height: 40px;
+    width: 59px;
+    color: black;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    background-color: rgb(0, 0, 0, 0.2);
+    border-style: solid;
+    border: none;
+    border-radius: 14px;
+    max-width: fit-content;
+    margin-left: 1px;
+    margin-right: auto;
+    margin-top: 13px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.searchB:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.settingsB {
+    height: 40px;
+    width: 59px;
+    color: black;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 9px;
+    background-color: rgb(0, 0, 0, 0.2);
+    border-style: solid;
+    border: none;
+    border-radius: 14px;
+    max-width: fit-content;
+    margin-left: 1px;
+    margin-right: auto;
+    margin-top: 13px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.settingsB:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.scoreOptions{
+    position: fixed;
+    margin-top: 47px;
+    margin-left: 52px;
+    height: 100%;
+    width: calc(100% - 75px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.scoreOptionMY{
+    top: 55px;
+    left: 60px; /* Adjust to the width of the left toolbar */
+    width: calc(100% - 0px);
+    height: 55px;
+    background-color: rgba(207, 207, 207, 0.699);
+    display: grid;
+    align-items: center;
+    padding-left: 10px;
+    margin-left: 8px;
+    margin-top: 8px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+}
+
+.scoreOptionALL{
+    top: 55px;
+    left: 60px;
+    width: calc(100% - 0px);
+    height: 55px;
+    background-color: rgba(207, 207, 207, 0.699);
+    display: grid;
+    align-items: center;
+    padding-left: 10px;
+    margin-left: 8px;
+    margin-top: 8px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    cursor: pointer;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: rgb(15, 115, 215);
+}
+
+a:link {
+    text-decoration: none;
+}
