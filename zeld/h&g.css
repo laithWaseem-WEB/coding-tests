@@ -1,0 +1,27 @@
+.bottomBar {
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 0.6fr 0.5fr;
+    background-color: #669d34;
+    border: 5px solid #a1a1a170;
+    border-top-left-radius: 18px; 
+    border-top-right-radius: 18px; 
+    height: 100px;
+    align-items: center;
+    font-size: 30px;
+}
+
+.homeBB {
+    color: black;
+    margin: auto;
+    width: 50%;
+}
+
+.settingsBB {
+    color: black;
+    margin: auto;
+    width: 50%;
+}
