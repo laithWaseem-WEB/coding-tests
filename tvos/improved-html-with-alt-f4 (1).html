@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Product+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --google-blue: #4285F4;
+            --google-red: #EA4335;
+            --google-yellow: #FBBC05;
+            --google-green: #34A853;
+            --background-dark: #111111;
+            --card-bg: #202020;
+            --text-color: #FFFFFF;
+            --secondary-text: #BBBBBB;
+            --notification-bg: rgba(0, 0, 0, 0.8);
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .google-tv-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .google-logo {
+            font-family: 'Product Sans', 'Google Sans', sans-serif;
+            font-size: 26px;
+            font-weight: 500;
+            color: var(--text-color);
+            display: flex;
+            letter-spacing: -0.5px;
+        }
+
+        .google-logo span:nth-child(1) { color: var(--google-blue); }
+        .google-logo span:nth-child(2) { color: var(--google-red); }
+        .google-logo span:nth-child(3) { color: var(--google-yellow); }
+        .google-logo span:nth-child(4) { color: var(--google-blue); }
+        .google-logo span:nth-child(5) { color: var(--google-green); }
+        .google-logo span:nth-child(6) { color: var(--google-red); }
+
+        .tv-text {
+            margin-left: 10px;
+            font-size: 24px;
+            font-weight: 500;
+            font-family: 'Product Sans', 'Google Sans', sans-serif;
+            background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .datetime-container {
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .time {
+            font-size: 22px;
+            font-weight: 300;
+        }
+
+        .date {
+            font-size: 14px;
+            color: var(--secondary-text);
+        }
+
+        .welcome-banner {
+            padding: 20px 40px;
+            margin-top: 20px;
+        }
+
+        .welcome-text {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .content-section {
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            margin: 10px 40px;
+            color: var(--text-color);
+        }
+
+        .content-row {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 40px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        .content-row::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .app-card {
+            min-width: 210px;
+            height: 120px;
+            margin-right: 18px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .app-card.focused {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--google-blue);
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        .app-logo {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            z-index: 2;
+        }
+
+        .app-name {
+            font-size: 16px;
+            color: var(--secondary-text);
+            z-index: 2;
+        }
+
+        .app-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .app-card:hover .app-image {
+            opacity: 0.7;
+        }
+
+        .featured-content {
+            position: relative;
+            height: 270px;
+            background: linear-gradient(90deg, var(--background-dark) 0%, rgba(0,0,0,0.3) 100%);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .featured-info {
+            padding: 30px 40px;
+            width: 50%;
+            z-index: 2;
+        }
+
+        .featured-title {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .featured-description {
+            font-size: 16px;
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+        }
+
+        .watch-button {
+            background-color: var(--google-red);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-family: 'Google Sans', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .featured-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, var(--background-dark) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+            z-index: 1;
+        }
+
+        .featured-background {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 70%;
+            background-color: #333;
+            z-index: 0;
+        }
+
+        .navigation-help {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+        
+        #notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: var(--notification-bg);
+            color: var(--text-color);
+            border-radius: 5px;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .control {
+            margin: 0 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .key {
+            background-color: var(--card-bg);
+            border-radius: 4px;
+            padding: 4px 8px;
+            margin-right: 6px;
+            color: var(--text-color);
+        }
+    </style>
+    <title>Google TV</title>
+</head>
+<body>
+    <div class="header">
+        <div class="google-tv-logo">
+            <div class="google-logo">
+                <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+            </div>
+            <div class="tv-text">TV</div>
+        </div>
+        <div class="datetime-container">
+            <div id="time" class="time">12:00 PM</div>
+            <div id="date" class="date">Thursday, May 8</div>
+        </div>
+    </div>
+
+    <div id="welcome-banner" class="welcome-banner">
+        <h2 id="welcome-text" class="welcome-text">Welcome to Google TV</h2>
+    </div>
+
+    <div class="featured-content">
+        <div class="featured-info">
+            <div class="featured-title">Watch YouTube TV</div>
+            <div class="featured-description">Stream live TV from 85+ channels including sports, news, and more.</div>
+            <button id="featured-button" class="watch-button" data-app-id="youtube">Watch Now</button>
+        </div>
+        <div class="featured-gradient"></div>
+        <div class="featured-background" style="background-color: #FF0000;"></div>
+    </div>
+
+    <div class="content-section">
+        <h3 class="section-title">Apps</h3>
+        <div class="content-row" id="apps-row">
+            <div class="app-card" data-app-id="youtube" tabindex="0">
+                <div class="card-content">
+                    <img src="ytv.png" alt="YouTube TV" class="app-image">
+                    
+                </div>
+            </div>
+            <div class="app-card" data-app-id="cinemana" tabindex="0">
+                <div class="card-content">
+                    <img src="cstv.jpg" alt="Cinemana" class="app-image">
+                    
+                </div>
+            </div>
+            <div class="app-card" data-app-id="shahid" tabindex="0">
+                <div class="card-content">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Shahid_new_Logo.jpg" alt="Shahid" class="app-image">
+                    
+                </div>
+            </div>
+            <div class="app-card" data-app-id="netflix" tabindex="0">
+                <div class="card-content">
+                    <img src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940" alt="Netflix" class="app-image">
+                    
+                </div>
+            </div>
+       </div>
+    </div>
+
+    <div class="content-section">
+        <h3 class="section-title">For You</h3>
+        <div class="content-row">
+            <div class="app-card">
+                <div class="card-content">
+                    
+                    <div class="app-name">Movie Recommendations</div>
+                </div>
+            </div>
+            <div class="app-card">
+                <div class="card-content">
+                    
+                    <div class="app-name">TV Shows</div>
+                </div>
+            </div>
+            <div class="app-card">
+                <div class="card-content">
+                    
+                    <div class="app-name">Live TV</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation-help">
+        <div class="control"><span class="key">←</span> <span class="key">→</span> Navigate</div>
+        <div class="control"><span class="key">Enter</span> Select</div>
+        <div class="control"><span class="key">Back</span> Return</div>
+        <div class="control"><span class="key">F11</span> Fullscreen</div>
+        <div class="control"><span class="key">Alt+F4</span> Close</div>
+        <div class="control"><span class="key">Remote</span> Supported</div>
+    </div>
+
+    <script>
+        // Date and Time Functions
+        function updateDateTime() {
+            const now = new Date();
+            
+            // Update time in 12-hour format without seconds
+            let hours = now.getHours();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('time').textContent = `${hours}:${minutes} ${ampm}`;
+            
+            // Update date with day name
+            const options = { weekday: 'long', month: 'long', day: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        // Update every minute
+        setInterval(updateDateTime, 60000);
+        updateDateTime(); // Initial call
+
+        // Navigation System
+        const appCards = document.querySelectorAll('.app-card');
+        let currentFocus = 0;
+        let currentSection = 'apps'; // Current section being navigated
+
+        function updateFocus() {
+            // Remove focus from all
+            appCards.forEach(card => {
+                card.classList.remove('focused');
+            });
+            
+            // Add focus to current
+            if (currentSection === 'apps') {
+                const appsCards = document.querySelectorAll('#apps-row .app-card');
+                if (appsCards[currentFocus]) {
+                    appsCards[currentFocus].classList.add('focused');
+                    appsCards[currentFocus].focus();
+                    
+                    // Scroll into view if needed
+                    appsCards[currentFocus].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'center'
+                    });
+                }
+            }
+        }
+
+        // Initial focus
+        updateFocus();
+
+        // Alt+F4 detection
+        document.addEventListener('keydown', function(e) {
+            // Check if Alt is pressed and F4 key is pressed
+            if (e.altKey && e.key === 'F4') {
+                // Close the window
+                window.close();
+                
+                // If window.close() doesn't work (which is common due to browser security),
+                // show a confirmation dialog as a fallback
+                setTimeout(() => {
+                    if (confirm('Do you want to close this window?')) {
+                        // Try again with a user-initiated action
+                        window.close();
+                    }
+                }, 100);
+                
+                e.preventDefault();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'F11') {
+                // Toggle fullscreen
+                toggleFullscreen();
+                e.preventDefault();
+                return;
+            }
+            
+            if (currentSection === 'apps') {
+                const appsCards = document.querySelectorAll('#apps-row .app-card');
+                
+                switch (e.key) {
+                    case 'ArrowRight':
+                        if (currentFocus < appsCards.length - 1) {
+                            currentFocus++;
+                            updateFocus();
+                        }
+                        break;
+                    case 'ArrowLeft':
+                        if (currentFocus > 0) {
+                            currentFocus--;
+                            updateFocus();
+                        }
+                        break;
+                    case 'Enter':
+                        if (appsCards[currentFocus]) {
+                            launchApp(appsCards[currentFocus].getAttribute('data-app-id'));
+                        }
+                        break;
+                }
+                e.preventDefault(); // Prevent scrolling with arrow keys
+            }
+        });
+        
+        // Function to toggle fullscreen
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                // Enter fullscreen
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+                    document.documentElement.msRequestFullscreen();
+                }
+            } else {
+                // Exit fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { // Firefox
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE/Edge
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        // Game controller and TV remote support
+        window.addEventListener("gamepadconnected", function(e) {
+            console.log("Gamepad/Remote connected: " + e.gamepad.id);
+            // Start polling for gamepad input
+            requestAnimationFrame(pollGamepad);
+            
+            // Show notification that a controller was connected
+            showNotification(`Connected: ${e.gamepad.id}`);
+        });
+
+        window.addEventListener("gamepaddisconnected", function(e) {
+            console.log("Gamepad/Remote disconnected: " + e.gamepad.id);
+            showNotification(`Disconnected: ${e.gamepad.id}`);
+        });
+
+        // Keep track of all connected remotes/gamepads
+        let lastGamepadButtonState = [];
+        let lastGamepadAxisState = [];
+
+        function showNotification(message, duration = 3000) {
+            // Create notification element if it doesn't exist
+            let notification = document.getElementById('notification');
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.id = 'notification';
+                notification.style.position = 'fixed';
+                notification.style.top = '20px';
+                notification.style.right = '20px';
+                notification.style.padding = '10px 15px';
+                notification.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                notification.style.color = 'white';
+                notification.style.borderRadius = '5px';
+                notification.style.zIndex = '9999';
+                notification.style.transition = 'opacity 0.3s ease';
+                document.body.appendChild(notification);
+            }
+            
+            // Show notification
+            notification.textContent = message;
+            notification.style.opacity = '1';
+            
+            // Hide after duration
+            setTimeout(() => {
+                notification.style.opacity = '0';
+            }, duration);
+        }
+
+        function pollGamepad() {
+            const gamepads = navigator.getGamepads();
+            const appsCards = document.querySelectorAll('#apps-row .app-card');
+            
+            // Process all connected gamepads/remotes
+            for (let i = 0; i < gamepads.length; i++) {
+                const gamepad = gamepads[i];
+                
+                if (!gamepad) continue;
+                
+                // Initialize arrays if needed
+                if (!lastGamepadButtonState[i]) lastGamepadButtonState[i] = [];
+                if (!lastGamepadAxisState[i]) lastGamepadAxisState[i] = [];
+                
+                // D-pad navigation (buttons)
+                // Button mapping can vary across devices, so we check multiple possible mappings
+                
+                // Left navigation
+                if ((gamepad.buttons[14] && gamepad.buttons[14].pressed && !lastGamepadButtonState[i][14]) || // Standard gamepad
+                    (gamepad.buttons[2] && gamepad.buttons[2].pressed && !lastGamepadButtonState[i][2])) {   // Some TV remotes
+                    if (currentFocus > 0) {
+                        currentFocus--;
+                        updateFocus();
+                    }
+                }
+                
+                // Right navigation
+                if ((gamepad.buttons[15] && gamepad.buttons[15].pressed && !lastGamepadButtonState[i][15]) || // Standard gamepad
+                    (gamepad.buttons[3] && gamepad.buttons[3].pressed && !lastGamepadButtonState[i][3])) {   // Some TV remotes
+                    if (currentFocus < appsCards.length - 1) {
+                        currentFocus++;
+                        updateFocus();
+                    }
+                }
+                
+                // Select button (varies across devices)
+                if ((gamepad.buttons[0] && gamepad.buttons[0].pressed && !lastGamepadButtonState[i][0]) || // Standard gamepad A button
+                    (gamepad.buttons[10] && gamepad.buttons[10].pressed && !lastGamepadButtonState[i][10])) { // Some TV remotes OK button
+                    if (appsCards[currentFocus]) {
+                        launchApp(appsCards[currentFocus].getAttribute('data-app-id'));
+                    }
+                }
+                
+                // Back button
+                if ((gamepad.buttons[1] && gamepad.buttons[1].pressed && !lastGamepadButtonState[i][1]) || // Standard gamepad B button
+                    (gamepad.buttons[11] && gamepad.buttons[11].pressed && !lastGamepadButtonState[i][11])) { // Some TV remotes back button
+                    // Back functionality
+                    console.log("Back button pressed");
+                }
+                
+                // Analog stick support
+                if (gamepad.axes && gamepad.axes.length >= 2) {
+                    // Horizontal axis (left/right)
+                    if (gamepad.axes[0] <= -0.7 && (lastGamepadAxisState[i][0] === undefined || lastGamepadAxisState[i][0] > -0.5)) {
+                        // Left movement
+                        if (currentFocus > 0) {
+                            currentFocus--;
+                            updateFocus();
+                        }
+                    } else if (gamepad.axes[0] >= 0.7 && (lastGamepadAxisState[i][0] === undefined || lastGamepadAxisState[i][0] < 0.5)) {
+                        // Right movement
+                        if (currentFocus < appsCards.length - 1) {
+                            currentFocus++;
+                            updateFocus();
+                        }
+                    }
+                    
+                    // Save axis state
+                    lastGamepadAxisState[i][0] = gamepad.axes[0];
+                    lastGamepadAxisState[i][1] = gamepad.axes[1];
+                }
+                
+                // Save button state for this gamepad
+                for (let j = 0; j < gamepad.buttons.length; j++) {
+                    lastGamepadButtonState[i][j] = gamepad.buttons[j].pressed;
+                }
+            }
+            
+            requestAnimationFrame(pollGamepad);
+        }
+        
+        // WebHID API support for more specialized TV remotes
+        if ('hid' in navigator) {
+            let hidDevices = [];
+            
+            // Function to connect to a HID device
+            async function connectHID() {
+                try {
+                    // Request device with common TV remote filters
+                    const devices = await navigator.hid.requestDevice({
+                        filters: [
+                            // Generic HID remotes
+                            { usage: 0x0001, usagePage: 0x000C }, // Consumer control
+                            { usagePage: 0x0001 }, // Generic desktop controls
+                            {} // Allow any HID device as fallback
+                        ]
+                    });
+                    
+                    for (const device of devices) {
+                        if (!device.opened) {
+                            await device.open();
+                            console.log(`HID device connected: ${device.productName}`);
+                            showNotification(`Connected: ${device.productName}`);
+                            
+                            device.addEventListener('inputreport', handleHIDInput);
+                            hidDevices.push(device);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error connecting to HID device:', error);
+                }
+            }
+            
+            // Function to handle input from HID device
+            function handleHIDInput(event) {
+                const { data, device, reportId } = event;
+                console.log(`Input from ${device.productName}:`, new Uint8Array(data.buffer));
+                
+                // Decode the data based on common remote control protocols
+                const dataArray = new Uint8Array(data.buffer);
+                
+                // Basic interpretation - actual implementation depends on specific remote protocol
+                if (dataArray[0] === 0x01 || dataArray[1] === 0x01) { // Example: right button
+                    if (currentFocus < document.querySelectorAll('#apps-row .app-card').length - 1) {
+                        currentFocus++;
+                        updateFocus();
+                    }
+                } else if (dataArray[0] === 0x02 || dataArray[1] === 0x02) { // Example: left button
+                    if (currentFocus > 0) {
+                        currentFocus--;
+                        updateFocus();
+                    }
+                } else if (dataArray[0] === 0x03 || dataArray[1] === 0x03) { // Example: select button
+                    const appsCards = document.querySelectorAll('#apps-row .app-card');
+                    if (appsCards[currentFocus]) {
+                        launchApp(appsCards[currentFocus].getAttribute('data-app-id'));
+                    }
+                }
+            }
+            
+            // Add connect button for HID devices
+            const connectButton = document.createElement('button');
+            connectButton.textContent = 'Connect Remote';
+            connectButton.style.position = 'fixed';
+            connectButton.style.top = '10px';
+            connectButton.style.right = '10px';
+            connectButton.style.zIndex = '1000';
+            connectButton.style.padding = '8px 12px';
+            connectButton.style.background = 'var(--google-blue)';
+            connectButton.style.color = 'white';
+            connectButton.style.border = 'none';
+            connectButton.style.borderRadius = '4px';
+            connectButton.style.cursor = 'pointer';
+            connectButton.style.position = 'fixed';
+            connectButton.style.top = '10px';
+            connectButton.style.right = '10px';
+            connectButton.addEventListener('click', connectHID);
+            
+            // Auto-detect previously paired devices
+            navigator.hid.getDevices().then(devices => {
+                devices.forEach(async device => {
+                    try {
+                        if (!device.opened) {
+                            await device.open();
+                            console.log(`HID device auto-connected: ${device.productName}`);
+                            device.addEventListener('inputreport', handleHIDInput);
+                            hidDevices.push(device);
+                        }
+                    } catch (error) {
+                        console.error(`Error opening HID device ${device.productName}:`, error);
+                    }
+                });
+            });
+            
+            document.body.appendChild(connectButton);
+        }
+
+        // App launching
+        function launchApp(appId) {
+            console.log(`Launching app: ${appId}`);
+            
+            // Define app URLs
+            const appUrls = {
+                'youtube': 'https://www.youtube.com/tv',
+                'cinemana': 'https://cinemana.shabakaty.com/CTV/#/home',
+                'netflix': 'https://www.netflix.com',
+                'shahid': 'https://shahid.mbc.net'
+            };
+            
+            // Navigate to the app URL using _blank to open in new tab
+            if (appUrls[appId]) {
+                window.open(appUrls[appId], '_blank');
+            }
+        }
+
+        // Click navigation also works
+        appCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                const appId = card.getAttribute('data-app-id');
+                if (appId) {
+                    launchApp(appId);
+                }
+            });
+            
+            // Mouse hover handling
+            card.addEventListener('mouseenter', () => {
+                currentFocus = index;
+                updateFocus();
+            });
+        });
+
+        // Featured content button
+        document.getElementById('featured-button').addEventListener('click', () => {
+            const appId = document.getElementById('featured-button').getAttribute('data-app-id');
+            launchApp(appId);
+        });
+    </script>
+</body>
+</html>

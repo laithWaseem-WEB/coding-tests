@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Product+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --google-blue: #4285F4;
+            --google-red: #EA4335;
+            --google-yellow: #FBBC05;
+            --google-green: #34A853;
+            --background-dark: #111111;
+            --card-bg: #202020;
+            --text-color: #FFFFFF;
+            --secondary-text: #BBBBBB;
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .google-tv-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .google-logo {
+            font-family: 'Product Sans', 'Google Sans', sans-serif;
+            font-size: 26px;
+            font-weight: 500;
+            color: var(--text-color);
+            display: flex;
+            letter-spacing: -0.5px;
+        }
+
+        .google-logo span:nth-child(1) { color: var(--google-blue); }
+        .google-logo span:nth-child(2) { color: var(--google-red); }
+        .google-logo span:nth-child(3) { color: var(--google-yellow); }
+        .google-logo span:nth-child(4) { color: var(--google-blue); }
+        .google-logo span:nth-child(5) { color: var(--google-green); }
+        .google-logo span:nth-child(6) { color: var(--google-red); }
+
+        .tv-text {
+            margin-left: 10px;
+            font-size: 24px;
+            font-weight: 500;
+            font-family: 'Product Sans', 'Google Sans', sans-serif;
+            background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .datetime-container {
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .time {
+            font-size: 22px;
+            font-weight: 300;
+        }
+
+        .date {
+            font-size: 14px;
+            color: var(--secondary-text);
+        }
+
+        .welcome-banner {
+            padding: 20px 40px;
+            margin-top: 20px;
+        }
+
+        .welcome-text {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .content-section {
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            margin: 10px 40px;
+            color: var(--text-color);
+        }
+
+        .content-row {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 40px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        .content-row::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .app-card {
+            min-width: 210px;
+            height: 120px;
+            margin-right: 18px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .app-card.focused {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--google-blue);
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        .app-logo {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            z-index: 2;
+        }
+
+        .app-name {
+            font-size: 16px;
+            color: var(--secondary-text);
+            z-index: 2;
+        }
+
+        .app-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .app-card:hover .app-image {
+            opacity: 0.7;
+        }
+
+        .featured-content {
+            position: relative;
+            height: 270px;
+            background: linear-gradient(90deg, var(--background-dark) 0%, rgba(0,0,0,0.3) 100%);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .featured-info {
+            padding: 30px 40px;
+            width: 50%;
+            z-index: 2;
+        }
+
+        .featured-title {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .featured-description {
+            font-size: 16px;
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+        }
+
+        .watch-button {
+            background-color: var(--google-red);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-family: 'Google Sans', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .featured-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, var(--background-dark) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+            z-index: 1;
+        }
+
+        .featured-background {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 70%;
+            background-color: #333;
+            z-index: 0;
+        }
+
+        .navigation-help {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+
+        .control {
+            margin: 0 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .key {
+            background-color: var(--card-bg);
+            border-radius: 4px;
+            padding: 4px 8px;
+            margin-right: 6px;
+            color: var(--text-color);
+        }
+
+        .bluetooth-button {
+            background-color: var(--google-blue);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-family: 'Google Sans', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .bluetooth-icon {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+        }
+
+        #connection-status {
+            font-size: 14px;
+            color: var(--secondary-text);
+            margin-left: 10px;
+        }
+
+        .remote-notification {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-family: 'Google Sans', sans-serif;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .remote-notification.visible {
+            opacity: 1;
+        }
+
+        .bluetooth-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .debug-panel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+            max-height: 200px;
+            overflow: auto;
+            color: #ffffff;
+            font-size: 12px;
+            z-index: 1000;
+            display: none;
+        }
+    </style>
+    <title>Google TV</title>
+</head>
+<body>
+    <div class="header">
+        <div class="google-tv-logo">
+            <div class="google-logo">
+                <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+            </div>
+            <div class="tv-text">TV</div>
+        </div>
+        <div class="bluetooth-container">
+            <button id="connect-bluetooth" class="bluetooth-button">
+                <svg class="bluetooth-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/>
+                </svg>
+                Connect Remote
+            </button>
+            <span id="connection-status"></span>
+        </div>
+        <div class="datetime-container">
+            <div id="time" class="time">12:00 PM</div>
+            <div id="date" class="date">Thursday, May 8</div>
+        </div>
+    </div>
+
+    <div id="welcome-banner" class="welcome-banner">
+        <h2 id="welcome-text" class="welcome-text">Welcome to Google TV</h2>
+    </div>
+
+    <div class="featured-content">
+        <div class="featured-info">
+            <div class="featured-title">Watch YouTube TV</div>
+            <div class="featured-description">Stream live TV from 85+ channels including sports, news, and more.</div>
+            <button id="featured-button" class="watch-button" data-app-id="youtube">Watch Now</button>
+        </div>
+        <div class="featured-gradient"></div>
+        <div class="featured-background" style="background-color: #FF0000;"></div>
+    </div>
+
+    <div class="content-section">
+        <div class="section-header">
+            <h3 class="section-title">Apps</h3>
+            <div class="section-controls">
+                <button id="add-app-button" class="action-button">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                    </svg>
+                    Add App
+                </button>
+                <button id="edit-apps-button" class="action-button">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M3,17.25V21H6.75L17.81,9.94L14.06,6.19L3,17.25M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87L20.71,7.04Z" />
+                    </svg>
+                    Edit Apps
+                </button>
+                <script>
+                    const editAppsButton = document.getElementById('edit-apps-button');
+                    const appCards = document.querySelectorAll('.app-card');
+
+                    editAppsButton.addEventListener('click', () => {
+                        const isEditMode = editAppsButton.classList.toggle('active');
+                        appCards.forEach(card => {
+                            if (isEditMode) {
+                                card.classList.add('edit-mode');
+                            } else {
+                                card.classList.remove('edit-mode');
+                            }
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 40px;
+        }
+
+        .section-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-family: 'Google Sans', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .action-button:hover {
+            background-color: var(--google-blue);
+        }
+
+        .action-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .app-card.edit-mode {
+            border: 2px dashed var(--google-blue);
+        }
+
+        .app-card .edit-controls {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: none; /* Hidden by default */
+            gap: 4px;
+            z-index: 3;
+        }
+
+        .app-card.edit-mode .edit-controls {
+            display: flex; /* Display only in edit mode */
+        }
+
+        .app-card.edit-mode .edit-controls {
+            display: flex;
+        }
+
+        .edit-button, .delete-button {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .edit-button:hover {
+            background-color: var(--google-blue);
+        }
+
+        .delete-button:hover {
+            background-color: var(--google-red);
+        }
+    </style></svg>
+
+    <div class="content-section">
+        <h3 class="section-title">Apps</h3>
+        <div class="content-row" id="apps-row">
+            <!-- Existing App Cards -->
+            <div class="app-card" data-app-id="youtube" tabindex="0">
+            <div class="card-content">
+                <img src="ytv.png" alt="YouTube TV" class="app-image">
+                <div class="edit-controls">
+                    <button class="edit-button">Edit</button>
+                    <button class="delete-button">Delete</button>
+                </div>
+            </div>
+            </div>
+            <div class="app-card" data-app-id="cinemana" tabindex="0">
+            <div class="card-content">
+                <img src="cstv.jpg" alt="Cinemana" class="app-image">
+            </div>
+            </div>
+            <div class="app-card" data-app-id="netflix" tabindex="0">
+            <div class="card-content">
+                <img src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940" alt="Netflix" class="app-image">
+            </div>
+            </div>
+        </div>
+        <div class="add-app-container">
+            <button id="add-app-button" class="bluetooth-button">Add App</button>
+        </div>
+
+        <script>
+            const appsRow = document.getElementById('apps-row');
+
+            // Add App Functionality
+            document.getElementById('add-app-button').addEventListener('click', () => {
+            const appName = prompt('Enter App Name:');
+            const appUrl = prompt('Enter App URL:');
+            const appImage = prompt('Enter App Image URL:');
+
+            if (appName && appUrl && appImage) {
+                const newAppCard = document.createElement('div');
+                newAppCard.classList.add('app-card');
+                newAppCard.setAttribute('data-app-id', appName.toLowerCase().replace(/\s+/g, '-'));
+                newAppCard.setAttribute('tabindex', '0');
+                newAppCard.innerHTML = `
+                <div class="card-content">
+                    <img src="${appImage}" alt="${appName}" class="app-image">
+                    <div class="edit-controls">
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Delete</button>
+                    </div>
+                </div>
+                `;
+
+                // Add click event to open app URL
+                newAppCard.addEventListener('click', () => {
+                    window.open(appUrl, '_blank');
+                });
+
+                // Add delete functionality
+                const deleteButton = newAppCard.querySelector('.delete-button');
+                deleteButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    appsRow.removeChild(newAppCard);
+                });
+
+                appsRow.appendChild(newAppCard);
+            }
+            });
+        </script>
+    </div>
+
+    <div class="content-section">
+        <h3 class="section-title">For You</h3>
+        <div class="content-row">
+            <div class="app-card">
+                <div class="card-content">
+                    
+                    <div class="app-name">Movie Recommendations</div>
+                </div>
+            </div>
+            <div class="app-card">
+                <div class="card-content">
+                    
+                    <div class="app-name">TV Shows</div>
+                </div>
+            </div>
+            <div class="app-card">
+                <div class="card-content">
+                    
+                    <div class="app-name">Live TV</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation-help">
+        <div class="control"><span class="key">←</span> <span class="key">→</span> Navigate</div>
+        <div class="control"><span class="key">Enter</span> Select</div>
+        <div class="control"><span class="key">Back</span> Return</div>
+        <div class="control"><span class="key">F11</span> Fullscreen</div>
+        <div class="control"><span class="key">BT</span> Bluetooth Remote</div>
+    </div>
+
+    <div id="remote-notification" class="remote-notification">Remote control action detected</div>
+    <div id="debug-panel" class="debug-panel"></div>
+
+    <script>
+        // Date and Time Functions
+        function updateDateTime() {
+            const now = new Date();
+            
+            // Update time in 12-hour format without seconds
+            let hours = now.getHours();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('time').textContent = `${hours}:${minutes} ${ampm}`;
+            
+            // Update date with day name
+            const options = { weekday: 'long', month: 'long', day: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        // Update every minute
+        setInterval(updateDateTime, 60000);
+        updateDateTime(); // Initial call
+
+        // Navigation System
+        const appCards = document.querySelectorAll('.app-card');
+        let currentFocus = 0;
+        let currentSection = 'apps'; // Current section being navigated
+
+        function updateFocus() {
+            // Remove focus from all
+            appCards.forEach(card => {
+                card.classList.remove('focused');
+            });
+            
+            // Add focus to current
+            if (currentSection === 'apps') {
+                const appsCards = document.querySelectorAll('#apps-row .app-card');
+                if (appsCards[currentFocus]) {
+                    appsCards[currentFocus].classList.add('focused');
+                    appsCards[currentFocus].focus();
+                    
+                    // Scroll into view if needed
+                    appsCards[currentFocus].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'center'
+                    });
+                }
+            }
+        }
+
+        // Initial focus
+        updateFocus();
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'F11') {
+                // Toggle fullscreen
+                toggleFullscreen();
+                e.preventDefault();
+                return;
+            }
+            
+            if (currentSection === 'apps') {
+                const appsCards = document.querySelectorAll('#apps-row .app-card');
+                
+                switch (e.key) {
+                    case 'ArrowRight':
+                        if (currentFocus < appsCards.length - 1) {
+                            currentFocus++;
+                            updateFocus();
+                        }
+                        break;
+                    case 'ArrowLeft':
+                        if (currentFocus > 0) {
+                            currentFocus--;
+                            updateFocus();
+                        }
+                        break;
+                    case 'Enter':
+                        if (appsCards[currentFocus]) {
+                            launchApp(appsCards[currentFocus].getAttribute('data-app-id'));
+                        }
+                        break;
+                }
+                e.preventDefault(); // Prevent scrolling with arrow keys
+            }
+        });
+        
+        // Function to toggle fullscreen
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                // Enter fullscreen
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+                    document.documentElement.msRequestFullscreen();
+                }
+                window.scrollTo(0, 0); // Scroll to top when entering fullscreen
+
+            } else {
+                // Exit fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { // Firefox
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE/Edge
+                    document.documentElement.msExitFullscreen();
+                }
+                window.scrollTo(0, 0); // Scroll to top when exiting fullscreen
+            }
+        }
+
+        // Game controller support
+        window.addEventListener("gamepadconnected", function(e) {
+            console.log("Gamepad connected: " + e.gamepad.id);
+            // Start polling for gamepad input
+            requestAnimationFrame(pollGamepad);
+        });
+
+        let lastGamepadButtonState = [];
+
+        function pollGamepad() {
+            const gamepads = navigator.getGamepads();
+            if (gamepads[0]) {
+                const gamepad = gamepads[0];
+                const appsCards = document.querySelectorAll('#apps-row .app-card');
+                
+                // D-pad navigation
+                if (gamepad.buttons[14].pressed && !lastGamepadButtonState[14]) { // Left
+                    if (currentFocus > 0) {
+                        currentFocus--;
+                        updateFocus();
+                    }
+                }
+                
+                if (gamepad.buttons[15].pressed && !lastGamepadButtonState[15]) { // Right
+                    if (currentFocus < appsCards.length - 1) {
+                        currentFocus++;
+                        updateFocus();
+                    }
+                }
+                
+                // A/B buttons for select/back
+                if (gamepad.buttons[0].pressed && !lastGamepadButtonState[0]) { // A Button (Select)
+                    if (appsCards[currentFocus]) {
+                        launchApp(appsCards[currentFocus].getAttribute('data-app-id'));
+                    }
+                }
+                
+                // Save button state
+                for (let i = 0; i < gamepad.buttons.length; i++) {
+                    lastGamepadButtonState[i] = gamepad.buttons[i].pressed;
+                }
+            }
+            
+            requestAnimationFrame(pollGamepad);
+        }
+
+        // App launching
+        function launchApp(appId) {
+            console.log(`Launching app: ${appId}`);
+            
+            // Define app URLs
+            const appUrls = {
+                'youtube': 'https://www.youtube.com/tv',
+                'cinemana': 'https://cinemana.shabakaty.com/CTV/#/home',
+                'netflix': 'https://www.netflix.com'
+            };
+            
+            // Navigate to the app URL using _blank to open in new tab
+            if (appUrls[appId]) {
+                window.open(appUrls[appId], '_blank');
+            }
+        }
+
+        // Click navigation also works
+        appCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                const appId = card.getAttribute('data-app-id');
+                if (appId) {
+                    launchApp(appId);
+                }
+            });
+            
+            // Mouse hover handling
+            card.addEventListener('mouseenter', () => {
+                currentFocus = index;
+                updateFocus();
+            });
+        });
+
+        // Featured content button
+        document.getElementById('featured-button').addEventListener('click', () => {
+            const appId = document.getElementById('featured-button').getAttribute('data-app-id');
+            launchApp(appId);
+        });
+
+        // Bluetooth TV Remote Support
+        // ===============================
+
+        // Debug function to help troubleshoot
+        function debugLog(message) {
+            const debugPanel = document.getElementById('debug-panel');
+            const logEntry = document.createElement('div');
+            logEntry.textContent = message;
+            debugPanel.appendChild(logEntry);
+            
+            // Auto-scroll to bottom
+            debugPanel.scrollTop = debugPanel.scrollHeight;
+            
+            // Limit entries
+            while (debugPanel.children.length > 20) {
+                debugPanel.removeChild(debugPanel.firstChild);
+            }
+        }
+
+        // Toggle debug panel with "d" key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'd' && e.ctrlKey) {
+                const debugPanel = document.getElementById('debug-panel');
+                debugPanel.style.display = debugPanel.style.display === 'none' || !debugPanel.style.display ? 'block' : 'none';
+            }
+        });
+
+        // Bluetooth device related variables
+        let bluetoothDevice = null;
+        let gattServer = null;
+        let remoteService = null;
+        let inputCharacteristic = null;
+        let isConnected = false;
+
+        // Remote button codes - customize these based on your specific remote
+        const REMOTE_BUTTON = {
+            UP: 0x01,
+            DOWN: 0x02,
+            LEFT: 0x03,
+            RIGHT: 0x04,
+            OK: 0x05,
+            BACK: 0x06,
+            HOME: 0x07,
+            VOLUME_UP: 0x08,
+            VOLUME_DOWN: 0x09,
+            MUTE: 0x0A,
+            PLAY_PAUSE: 0x0B,
+            RED: 0x0C,
+            GREEN: 0x0D,
+            YELLOW: 0x0E,
+            BLUE: 0x0F
+        };
+
+        // Common UUIDs for HID devices
+        const HID_SERVICE_UUID = '1812';  // Human Interface Device
+        const HID_INFO_UUID = '2A4A';     // HID Information
+        const HID_REPORT_UUID = '2A4D';   // Report
+
+        // Function to connect to bluetooth remote
+        async function connectBluetoothRemote() {
+            if (navigator.bluetooth) {
+                try {
+                    document.getElementById('connection-status').textContent = "Scanning...";
+                    
+                    // Request Bluetooth device with HID service
+                    bluetoothDevice = await navigator.bluetooth.requestDevice({
+                        filters: [
+                            // Filters for common TV remotes
+                            { services: [HID_SERVICE_UUID] }, // HID service
+                            { namePrefix: 'Remote' },
+                            { namePrefix: 'TV Remote' },
+                            { namePrefix: 'BT Remote' }
+                        ],
+                        optionalServices: [HID_SERVICE_UUID]
+                    });
+                    
+                    debugLog(`Device selected: ${bluetoothDevice.name}`);
+                    document.getElementById('connection-status').textContent = "Connecting...";
+                    
+                    // Connect to the GATT server
+                    gattServer = await bluetoothDevice.gatt.connect();
+                    debugLog('Connected to GATT server');
+                    
+                    // Get the HID Service
+                    remoteService = await gattServer.getPrimaryService(HID_SERVICE_UUID);
+                    debugLog('Got HID service');
+                    
+                    // Get characteristics for input reports
+                    const characteristics = await remoteService.getCharacteristics();
+                    debugLog(`Found ${characteristics.length} characteristics`);
+                    
+                    // Look for input report characteristic
+                    for (const characteristic of characteristics) {
+                        if (characteristic.properties.notify) {
+                            inputCharacteristic = characteristic;
+                            debugLog(`Found input characteristic: ${characteristic.uuid}`);
+                            break;
+                        }
+                    }
+                    
+                    if (inputCharacteristic) {
+                        // Start notifications for input reports
+                        await inputCharacteristic.startNotifications();
+                        inputCharacteristic.addEventListener('characteristicvaluechanged', handleRemoteInput);
+                        
+                        isConnected = true;
+                        document.getElementById('connection-status').textContent = "Connected";
+                        document.getElementById('connect-bluetooth').textContent = "Disconnect";
+                        showNotification("Remote connected successfully");
+                        debugLog('Started notifications for remote input');
+                    } else {
+                        document.getElementById('connection-status').textContent = "Failed to find input";
+                        debugLog('Could not find input characteristic');
+                    }
+                    
+                    // Set up disconnect handler
+                    bluetoothDevice.addEventListener('gattserverdisconnected', handleDisconnect);
+                    
+                } catch (error) {
+                    document.getElementById('connection-status').textContent = "Connection failed";
+                    debugLog(`Error: ${error.message}`);
+                    console.error('Bluetooth error:', error);
+                }
+            } else {
+                document.getElementById('connection-status').textContent = "Not supported";
+                alert('Web Bluetooth is not supported in this browser. Please use Chrome, Edge, or Opera.');
+                debugLog('Web Bluetooth not supported');
+            }
+        }
+
+        // Function to disconnect from the remote
+        async function disconnectBluetoothRemote() {
+            if (bluetoothDevice && bluetoothDevice.gatt.connected) {
+                if (inputCharacteristic) {
+                    try {
+                        await inputCharacteristic.stopNotifications();
+                        inputCharacteristic.removeEventListener('characteristicvaluechanged', handleRemoteInput);
+                    } catch (error) {
+                        debugLog(`Error stopping notifications: ${error.message}`);
+                    }
+                }
+                
+                try {
+                    bluetoothDevice.gatt.disconnect();
+                    isConnected = false;
+                    document.getElementById('connection-status').textContent = "Disconnected";
+                    document.getElementById('connect-bluetooth').textContent = "Connect Remote";
+                    showNotification("Remote disconnected");
+                    debugLog('Remote disconnected');
+                } catch (error) {
+                    debugLog(`Error disconnecting: ${error.message}`);
+                }
+            }
+        }
+
+        // Handle disconnect event
+        function handleDisconnect() {
+            isConnected = false;
+            document.getElementById('connection-status').textContent = "Disconnected";
+            document.getElementById('connect-bluetooth').textContent = "Connect Remote";
+            debugLog('Remote disconnected unexpectedly');
+            
+            // Clean up references
+            inputCharacteristic = null;
+            remoteService = null;
+            gattServer = null;
+        }
+
+        // Handle remote control input
+        function handleRemoteInput(event) {
+            const value = event.target.value;
+            let buttonCode;
+            
+            // Different remotes send data in different formats
+            // We'll try to interpret common formats
+            if (value.byteLength === 1) {
+                buttonCode = value.getUint8(0);
+            } else if (value.byteLength >= 2) {
+                // Some remotes use the second byte for the button code
+                buttonCode = value.getUint8(1);
+            }
+            
+            debugLog(`Received button code: 0x${buttonCode.toString(16)}`);
+            processRemoteButton(buttonCode);
+        }
+
+        // Process the button press from remote
+        function processRemoteButton(buttonCode) {
+            const appsCards = document.querySelectorAll('#apps-row .app-card');
+            
+            switch (buttonCode) {
+                case REMOTE_BUTTON.LEFT:
+                    if (currentFocus > 0) {
+                        currentFocus--;
+                        updateFocus();
+                        showNotification("Left");
+                    }
+                    break;
+                    
+                case REMOTE_BUTTON.RIGHT:
+                    if (currentFocus < appsCards.length - 1) {
+                        currentFocus++;
+                        updateFocus();
+                        showNotification("Right");
+                    }
+                    break;
+                    
+                case REMOTE_BUTTON.OK:
+                    if (appsCards[currentFocus]) {
+                        showNotification("OK/Select");
+                        launchApp(appsCards[currentFocus].getAttribute('data-app-id'));
+                    }
+                    break;
+                    
+                case REMOTE_BUTTON.BACK:
+                    showNotification("Back");
+                    // Handle back button
+                    break;
+                    
+                case REMOTE_BUTTON.HOME:
+                    showNotification("Home");
+                    // Navigate to home position
+                    currentFocus = 0;
+                    updateFocus();
+                    break;
+                    
+                case REMOTE_BUTTON.PLAY_PAUSE:
+                    showNotification("Play/Pause");
+                    // Toggle play/pause functionality
+                    break;
+                    
+                 case REMOTE_BUTTON.RED:
+                    showNotification("Red Button");
+                    toggleFullscreen();
+                    break;
+                    
+                default:
+                    showNotification("Button: " + buttonCode);
+                    break;
+            }
+        }
+
+        // Show temporary notification for remote actions
+        function showNotification(message) {
+            const notification = document.getElementById('remote-notification');
+            notification.textContent = message;
+            notification.classList.add('visible');
+            
+            // Clear any existing timeout
+            if (notification.timeoutId) {
+                clearTimeout(notification.timeoutId);
+            }
+            
+            // Hide after 2 seconds
+            notification.timeoutId = setTimeout(() => {
+                notification.classList.remove('visible');
+            }, 2000);
+        }
+
+        // Handle auto-reconnection attempts
+        let reconnectAttempts = 0;
+        const MAX_RECONNECT_ATTEMPTS = 3;
+
+        async function attemptReconnect() {
+            if (reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+                reconnectAttempts++;
+                document.getElementById('connection-status').textContent = `Reconnecting (${reconnectAttempts})...`;
+                debugLog(`Attempting to reconnect (${reconnectAttempts}/${MAX_RECONNECT_ATTEMPTS})`);
+                
+                try {
+                    if (bluetoothDevice) {
+                        gattServer = await bluetoothDevice.gatt.connect();
+                        remoteService = await gattServer.getPrimaryService(HID_SERVICE_UUID);
+                        
+                        // Find input characteristic again
+                        const characteristics = await remoteService.getCharacteristics();
+                        for (const characteristic of characteristics) {
+                            if (characteristic.properties.notify) {
+                                inputCharacteristic = characteristic;
+                                break;
+                            }
+                        }
+                        
+                        if (inputCharacteristic) {
+                            await inputCharacteristic.startNotifications();
+                            inputCharacteristic.addEventListener('characteristicvaluechanged', handleRemoteInput);
+                            
+                            isConnected = true;
+                            reconnectAttempts = 0;
+                            document.getElementById('connection-status').textContent = "Connected";
+                            showNotification("Remote reconnected");
+                            debugLog('Successfully reconnected');
+                        }
+                    }
+                } catch (error) {
+                    debugLog(`Reconnection attempt failed: ${error.message}`);
+                    
+                    // Try again after a delay
+                    setTimeout(attemptReconnect, 2000);
+                }
+            } else {
+                document.getElementById('connection-status').textContent = "Reconnection failed";
+                debugLog('Max reconnection attempts reached');
+            }
+        }
+
+        // Add event listener for the Bluetooth connect button
+        document.getElementById('connect-bluetooth').addEventListener('click', async () => {
+            if (isConnected) {
+                await disconnectBluetoothRemote();
+            } else {
+                await connectBluetoothRemote();
+            }
+        });
+
+        // Add a custom function to handle Bluetooth remotes that use non-standard protocols
+        async function handleCustomRemoteProtocol(service) {
+            try {
+                // For remotes using AVRCP (Audio/Video Remote Control Profile)
+                const AVRCP_UUID = '110e';
+                if (service.uuid.includes(AVRCP_UUID)) {
+                    debugLog('Found AVRCP service, trying to connect');
+                    const characteristics = await service.getCharacteristics();
+                    
+                    for (const characteristic of characteristics) {
+                        if (characteristic.properties.notify || characteristic.properties.indicate) {
+                            inputCharacteristic = characteristic;
+                            await inputCharacteristic.startNotifications();
+                            inputCharacteristic.addEventListener('characteristicvaluechanged', handleAVRCPInput);
+                            
+                            debugLog('Connected to AVRCP remote control');
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            } catch (error) {
+                debugLog(`Error with custom protocol: ${error.message}`);
+                return false;
+            }
+        }
+
+        // Handle special mapping for AVRCP remotes
+        function handleAVRCPInput(event) {
+            const value = event.target.value;
+            debugLog(`AVRCP data received: ${value.getUint8(0)}`);
+            
+            // Map AVRCP codes to our button actions
+            let mappedButton;
+            
+            switch(value.getUint8(0)) {
+                case 0x41: // Play
+                    mappedButton = REMOTE_BUTTON.PLAY_PAUSE;
+                    break;
+                case 0x42: // Stop
+                    mappedButton = REMOTE_BUTTON.BACK;
+                    break;
+                case 0x44: // Forward
+                    mappedButton = REMOTE_BUTTON.RIGHT;
+                    break;
+                case 0x45: // Backward
+                    mappedButton = REMOTE_BUTTON.LEFT;
+                    break;
+                // Add more mappings as needed
+            }
+            
+            if (mappedButton) {
+                processRemoteButton(mappedButton);
+            }
+        }
+
+        // Check for Web Bluetooth support on page load
+        window.addEventListener('load', () => {
+            if (!navigator.bluetooth) {
+                document.getElementById('connect-bluetooth').disabled = true;
+                document.getElementById('connection-status').textContent = "Bluetooth not supported";
+            }
+        });
+
+        // Handle visibility change to properly reconnect when tab becomes active
+        document.addEventListener('visibilitychange', async () => {
+            if (document.visibilityState === 'visible' && bluetoothDevice && !isConnected) {
+                // Try to reconnect if we have a device but lost connection
+                attemptReconnect();
+            }
+        });
+
+        // For remotes that use BLE MIDI profile
+        async function handleMIDIRemote(service) {
+            const MIDI_UUID = '03b80e5a-ede8-4b33-a751-6ce34ec4c700';
+            
+            if (service.uuid === MIDI_UUID) {
+                try {
+                    const characteristics = await service.getCharacteristics();
+                    
+                    for (const characteristic of characteristics) {
+                        if (characteristic.properties.notify) {
+                            const midiChar = characteristic;
+                            await midiChar.startNotifications();
+                            midiChar.addEventListener('characteristicvaluechanged', handleMIDIInput);
+                            debugLog('MIDI remote connected');
+                            return true;
+                        }
+                    }
+                } catch (error) {
+                    debugLog(`MIDI error: ${error.message}`);
+                }
+            }
+            return false;
+        }
+
+        // Handle MIDI input from BLE MIDI remotes
+        function handleMIDIInput(event) {
+            const data = event.target.value;
+            const status = data.getUint8(0) >> 4;
+            const note = data.getUint8(1);
+            
+            debugLog(`MIDI message: status=${status}, note=${note}`);
+            
+            // Map MIDI notes to button actions
+            let buttonCode;
+            
+            switch(note) {
+                case 81: buttonCode = REMOTE_BUTTON.UP; break;
+                case 82: buttonCode = REMOTE_BUTTON.DOWN; break;
+                case 80: buttonCode = REMOTE_BUTTON.LEFT; break;
+                case 79: buttonCode = REMOTE_BUTTON.RIGHT; break;
+                case 83: buttonCode = REMOTE_BUTTON.OK; break;
+                // Add more mappings as needed
+            }
+            
+            if (buttonCode) {
+                processRemoteButton(buttonCode);
+            }
+        }
+    </script>
+</body>
+</html>
